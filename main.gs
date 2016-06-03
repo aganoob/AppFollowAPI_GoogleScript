@@ -8,4 +8,5 @@ function main() {
     "ext_id": "com.edadeal.android"
   }
   var response = makeRequest(params, endpoint, api_secret);
+  return response;
 }
