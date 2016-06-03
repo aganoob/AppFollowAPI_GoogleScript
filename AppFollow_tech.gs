@@ -1,7 +1,9 @@
 function makeRequest(params, endpoint, api_secret) {
-  var sign = makeSign(params, endpoint, api_secret);
-  params["sign"] = sign;
-  var url = BASE_URL + endpoint + paramsToQuery(params);
+  var params2 = new Object;
+  for (var attr in params) {params2[attr] = params[attr]};
+  var sign = makeSign(params2, endpoint, api_secret);
+  params2["sign"] = sign;
+  var url = BASE_URL + endpoint + paramsToQuery(params2);
   var response = UrlFetchApp.fetch(url);
   Logger.log(url)
   Logger.log(response.getContentText());
